@@ -15,12 +15,12 @@ This is a very popular concept and has been used successfully in previous MICCAI
 ### Data access
 
 Because your container runs in an isolated environment, the data needs to be mapped into the container. The input data files (4 modalities: fla.nii, t1c.nii, t1.nii, t2.nii) will be mapped to /data and the result of your segmentation must be placed in /data/results.
-Please call the resulting file "tumor<your_image>class.nii".
+Please call the resulting file "tumor\_"your\_image"\_class.nii".
 There should be no interaction with the container required other than running the Docker command below.
 
 ### Computing environment & Resources
 
-We will run your container on a selecton on test cases. Docker can set resource limits on containers. Please give us an indication how many CPUs and how much RAM is needed for you method, and what the resulting computation time will be.
+We will run your container on a selection on test cases. Docker can set resource limits on containers. Please give us an indication how many CPUs and how much RAM is needed for you method, and what the resulting computation time will be.
 
 ### GPU computation
 
@@ -32,10 +32,14 @@ To help you containerize your segmentation method with Docker, we have provided 
 
 ### Assistance
 
-If you are unsure whether your method can be containerized or how to proceed, please contact us in advance. We will try to help you with Docker.
+If you are unsure whether your method can be containerized or how to proceed, please contact us in advance. We will try to help you with Docker.  
+We have created a PDF-Document containing the exact specifications which you can download here: https://github.com/njarng/docker_brats/raw/master/BRATS_Docker_Interface.pdf
 
 ### What we need from you
-
++ Your version of the Docker run command below with the name of your container and the script call
++ Your requirements as far as resource usage is concerned
++ Additional notes regarding functionality
++ Links to Docker Hub or another platform where the image is available
 
 ### Docker commands
 
@@ -43,6 +47,10 @@ Your container will be run with the following commands:
 ~~~~
 docker run −v <directory>:/data −it <your image> <your script call>
 ~~~~
-directory will be our test directory containing the four modalities and the empty folder for your results.  
-your image is the name of your Docker image.  
-your script call is the script that should be called when running the container.  
+"directory" will be our test directory containing the four modalities and the empty folder for your results.  
+"your image" is the name of your Docker image.  
+"your script call" is the script that should be called when running the container.
+
+
+##### Notes
+This website is based on the text of the WHS Segmentation Challenge and can be found here: http://wmh.isi.uu.nl/methods/  
