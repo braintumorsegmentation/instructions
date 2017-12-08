@@ -10,3 +10,6 @@ This script makes use of several publicly available Docker images of research gr
 
 ## Info
 This code is not yet functional. Please contact me in case of questions.
+
+## Additional documents
+This repository also contains the Docker interface definition (PDF) for Docker containers taking part in the MICCAI BRATS competition and a website markdown explaining the details for the participants.
