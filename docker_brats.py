@@ -18,7 +18,7 @@ import argparse
 
 #Specify title and commands for the container
 #TODO: add list of all available containers
-arguments = ['/runTumorSegm', '--flair', 'subject/fla.nii', '--t1c', 'subject/t1c.nii', '--t2', 'subject/t2.nii', '--t1', 'subject/t1.nii', '--o', 'subject/results', '--threads', '8']
+arguments = ['/runTumorSegm', '--flair', 'subject/fla.nii', '--t1c', 'subject/t1c.nii', '--t2', 'subject/t2.nii', '--t1', 'subject/t1.nii', '--o', 'subject/results', '--threads', '8', '--skullstripped', '--orientation', 'lps']
 container = 'mikaelagn/magnrbm'
 
 #parse arguments for input, output directories and flags
