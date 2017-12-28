@@ -4,7 +4,7 @@ Version: 0.1
 
 Author: Christoph Berger, TU Munich
 
-**This is a version of the introductory text that can be found here: https://www.med.upenn.edu/sbia/brats2017/algorithms.html**
+**This is a version of the informational text that can be found here: https://www.med.upenn.edu/sbia/brats2017/algorithms.html**
 
 ## Introduction
 
@@ -50,6 +50,8 @@ To help you containerize your segmentation method with Docker, we have provided 
 
 If you are unsure whether your method can be containerized or how to proceed, please contact us in advance. We will try to help you with Docker.  
 We have created a PDF-Document containing the exact specifications which you can download here: https://github.com/njarng/docker_brats/raw/master/BRATS_Docker_Interface.pdf
+
+**Also, be sure to check out the documentation on the Docker website.**
 
 ### What we need from you
 + Your version of the Docker run command below with the name of your container and the script call
