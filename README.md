@@ -4,7 +4,7 @@ Version: 0.1
 
 Author: Christoph Berger, TU Munich
 
-**This is a version of the informational text that can be found here: https://www.med.upenn.edu/sbia/brats2017/algorithms.html**
+**This is an extended version of the informational text that can be found here: https://www.med.upenn.edu/sbia/brats2017/algorithms.html**
 
 ## Introduction
 
@@ -37,12 +37,13 @@ Steps:
 
 The full run command can be seen below. I suggest you read the introduction to Docker on their website: https://docs.docker.com/get-started/part2/
 Further instructions can be found here:
-- For Matlab code: https://de.mathworks.com/products/compiler/matlab-runtime.html (Use the Matlab Toolbox Deploy feature to compile your code)
-- Matlab example: http://wmh.isi.uu.nl/methods/example-matlab/
-- Another example (a bit outdated, but to give a general idea): https://github.com/vistalab/docker/tree/master/matlab/runtime/2015b
+- Python tutorial: https://runnable.com/docker/python/dockerize-your-python-application
 
 **Caffe and Matlab**: If you are using Caffe in combination with Matlab, I suggest to build an image using the Caffe image as base image and then installing the Matlab Runtime inside the container.
-Caffe Docker: https://github.com/BVLC/caffe/tree/master/docker
+- Caffe Docker: https://github.com/BVLC/caffe/tree/master/docker
+- Matlab Runtime: https://de.mathworks.com/products/compiler/matlab-runtime.html (Use the Matlab Toolbox Deploy feature to compile your code)
+- Matlab example: http://wmh.isi.uu.nl/methods/example-matlab/
+- Another example (a bit outdated, but to give a general idea): https://github.com/vistalab/docker/tree/master/matlab/runtime/2015b
 
 ### Data access
 
