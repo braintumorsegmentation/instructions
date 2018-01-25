@@ -26,11 +26,29 @@ Docker can be used to “wrap” your entire segmentation method (including all 
 
 This is a very popular concept and has been used successfully in previous MICCAI challenges. Docker Hub provides a large overview of existing Docker containers (base images), that can be used to build your own container. Furthermore, many popular programming environments and image analysis methods have Dockerfiles available.
 
+### Step for step instructions
+
+There are Dockerfiles as examples in this repository. They use the python:2.7 image as base and then install dependencies and finally copy the relevant files from the host to the container. The process itself should be pretty intuitive.
+Steps:
+1. Create a script for your segmentation code that reads the 4 modalities (either nii or nii.gz) from `/data`, performs the segmentation and writes the result back to `/data/results` in either nii or nii.gz format. For further naming instructions, please consult the **BRATS_Docker_Interface.pdf** file in this repository.
+2. Create a Dockerfile that uses a base image, installs all necessary dependencies and then copies your code and the script from step 1 to the container.
+3. Run `docker build .< Dockerfile` in the directory where your Dockerfile, your code and your script reside.
+4. After building, your container should be able to take input via the `-v <host_directory>:/data` mount command and perform your segmentation.
+
+The full run command can be seen below. I suggest you read the introduction to Docker on their website: https://docs.docker.com/get-started/part2/
+Further instructions can be found here:
+- For Matlab code: https://de.mathworks.com/products/compiler/matlab-runtime.html (Use the Matlab Toolbox Deploy feature to compile your code)
+- Matlab example: http://wmh.isi.uu.nl/methods/example-matlab/
+- Another example (a bit outdated, but to give a general idea): https://github.com/vistalab/docker/tree/master/matlab/runtime/2015b
+
+**Caffe and Matlab**: If you are using Caffe in combination with Matlab, I suggest to build an image using the Caffe image as base image and then installing the Matlab Runtime inside the container.
+Caffe Docker: https://github.com/BVLC/caffe/tree/master/docker
+
 ### Data access
 
-All test sets will be identical to the 2016 or 2017 test data that you have already processed. They are co-registered, skull-stripped, resampled to 1mm^3 isotropic resolution, and aligned to the SRI space. Data will be in NIfTI GZIP Compressed Tar Archive (.nii.gz) format, with all header information except the spatial resolution removed, and the individual volumes will be named ‘fla.nii.gz’, ‘t1c.nii.gz’, ‘t1.nii.gz’, ‘t2.nii.gz’. You can use any of the BRATS training or testing image volumes to check whether your Docker image runs as expected.
+All test sets will be identical to the 2016 or 2017 test data that you have already processed. They are co-registered, skull-stripped, resampled to 1mm^3 isotropic resolution, and aligned to the SRI space. Data will be in NIfTI GZIP Compressed Tar Archive (.nii.gz) format, with all header information except the spatial resolution removed, and the individual volumes will be named ‘flair.nii.gz’, ‘t1c.nii.gz’, ‘t1.nii.gz’, ‘t2.nii.gz’. You can use any of the BRATS training or testing image volumes to check whether your Docker image runs as expected.
 
-Because your container runs in an isolated environment, the data needs to be mapped into the container. The input data files, i.e., the ‘fla.nii.gz’, ‘t1c.nii.gz’, ‘t1.nii.gz’, ‘t2.nii.gz’ volumes, will be linked to /data and your segmentations must be placed in /data/results. Results should be a NIfTI file with the same resolution as the input data. Please call the resulting file "tumor\_'your_image'\_class.nii.gz", where ‘your\_image’ is an eight digit identifier of your algorithm. If your algorithm returns probabilities as well, you can return them accordingly, and name them, e.g., "tumor\_'your_image'\_prob_4.nii.gz" for results of class 4. If your algorithm returns tissue classes, please use “tissue\_’your_name’\_wm.nii.gz” for white matter (\*'\_gm.nii.gz' and ''\*\_csf.nii.gz' for the other two).
+Because your container runs in an isolated environment, the data needs to be mapped into the container. The input data files, i.e., the ‘flair.nii.gz’, ‘t1c.nii.gz’, ‘t1.nii.gz’, ‘t2.nii.gz’ volumes, will be linked to /data and your segmentations must be placed in /data/results. Results should be a NIfTI file with the same resolution as the input data. Please call the resulting file "tumor\_'your_image'\_class.nii.gz", where ‘your\_image’ is an eight digit identifier of your algorithm. If your algorithm returns probabilities as well, you can return them accordingly, and name them, e.g., "tumor\_'your_image'\_prob_4.nii.gz" for results of class 4. If your algorithm returns tissue classes, please use “tissue\_’your_name’\_wm.nii.gz” for white matter (\*'\_gm.nii.gz' and ''\*\_csf.nii.gz' for the other two).
 
 There should be no interaction with the container required other than running the Docker command below.
 
@@ -74,11 +92,6 @@ docker run −v <directory>:/data −it <your image> <your script call>
 
 ### Purpose
 This repository should provide some files and documents to aid in the containerization of BRATS methods.
-
-It also contains a script to run an arbitrary number of BRATS Docker containers on a set of patient volumes, but this script is not yet functional and is only provided for informational purposes.
-
-### Info
-This code is not yet functional. Please contact me in case of questions.
 
 ### Additional documents
 This repository also contains the Docker interface definition (PDF) for Docker containers taking part in the MICCAI BRATS competition and a website markdown explaining the details for the participants.
