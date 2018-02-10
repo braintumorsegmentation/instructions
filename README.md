@@ -59,7 +59,19 @@ We will run your container on a selection on test cases. Docker can set resource
 
 ### GPU computation
 
+**Update: You may also submit a NVIDIA-Docker container, but CPU-only is still preferred if possible (or both).**
+
 In our first instalment, we would like to run all code CPU-only to retain compatibility. Docker does not yet support GPU mapping on all platforms, so please provide a CPU-only version of you code. If you really want/need to use a GPU, please contact us.
+
+### NVIDIA-Docker
+The procedure of creating a Docker container with support for GPU computations is similar to the approach for normal Docker containers. To create a NVIDIA-Docker container, please follow the instructions from NVIDIA themselves:
+https://devblogs.nvidia.com/nvidia-docker-gpu-server-application-deployment-made-easy/
+
+Github Repo: https://github.com/NVIDIA/nvidia-docker
+
+**Your still need to follow the interface specifications provided above.** Please also submit performance indicators (computation time for the GPU/CPU used in your own tests) and the appropriate `nvidia-docker run`command in addition to the other infos required for a standard Docker implementation (see above).
+
+If you have additional questions or troubles using NVIDIA-Docker, please contact us via e-mail (see PDF for address).
 
 ### Examples
 
