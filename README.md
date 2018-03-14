@@ -1,16 +1,11 @@
 # Docker BRATS
-
-Version: 0.1
-
-Author: Christoph Berger, TU Munich
-
 **This is an extended version of the informational text that can be found here: https://www.med.upenn.edu/sbia/brats2017/algorithms.html**
 
 ## Introduction
 
 **In a nutshell:** We would like to have your algorithms in a Docker container, as well as in their original source code. We intend to run your dockerized algorithm on the BraTS 2016 test dataset to compare segmentation results as part of the BraTS'14-'16 journal manuscript, and to make all contributed Docker containers available through the upcoming BraTS algorithmic repository. Your source code will not be distributed and will only be used internally by the BraTS organizers, as a proof of code ownership (contact us if you cannot share your source code).
 
-Your algorithm should be able to generate a tumor segmentation on any multimodal brain scan that is preprocessed like a BraTS test subject. To allow for fair comparisons and assessing performance differences across algorithms, you are expected to indicate what training set you have used, during training and/or design of your algorithm, and in the case of private datasets then a description of those datasets.
+Your algorithm should be able to generate a tumor segmentation on any multimodal brain scan that is preprocessed like a BraTS test subject. To allow for fair comparisons and assessing performance differences across algorithms, you are expected to indicate what training set you have used, during training and/or design of your algorithm, and in the case of private datasets, a description of those datasets.
 
 ## Docker containers
 
@@ -24,7 +19,7 @@ The concept of containerization is to simplify the deployment of applications. D
 
 Docker can be used to “wrap” your entire segmentation method (including all dependencies and the operating system) into a single container. This container can be run as if it would be a single standalone application, anywhere, on any platform. Because your method and all dependencies are included in the container, the method is guaranteed to run exactly the same all the time.
 
-This is a very popular concept and has been used successfully in previous MICCAI challenges. Docker Hub provides a large overview of existing Docker containers (base images), that can be used to build your own container. Furthermore, many popular programming environments and image analysis methods have Dockerfiles available.
+Dockerization is a very popular concept and has been used successfully in previous MICCAI challenges, e.g., in the MSSEG challenge (https://portal.fli-iam.irisa.fr/msseg-challenge/overview) and the WMH Segmentation Challenge (http://wmh.isi.uu.nl/methods/). The current text is also based on info from the WMH Segmentation Challenge. Docker Hub (https://hub.docker.com/) provides a large overview of existing Docker containers (base images), that can be used to build your own container. Furthermore, many popular programming environments and image analysis methods have Dockerfiles available.
 
 ### Step for step instructions
 
@@ -75,7 +70,7 @@ If you have additional questions or troubles using NVIDIA-Docker, please contact
 
 ### Examples
 
-To help you containerize your segmentation method with Docker, we have provided some examples. Some exemplary Dockerfiles can be found on Github: https://github.com/njarng
+To help you containerize your segmentation method with Docker, we will provide some examples.
 
 ### Assistance
 
